@@ -9,10 +9,16 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+    public void start(Stage primaryStage) throws Exception {
+
+        Parent rootNode = FXMLLoader.load(getClass().getResource("/resources/fxml/layout.fxml"));
+        Scene scene = new Scene(rootNode);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Traveller handbook");
+        primaryStage.setWidth(620);
+        primaryStage.setHeight(705);
+
         primaryStage.show();
     }
 
