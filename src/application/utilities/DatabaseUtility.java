@@ -12,19 +12,16 @@ public class DatabaseUtility {
 
     private static final String connectionString =  "jdbc:mysql://localhost/Countries";
 
+    private static final String user = "root";
+
+    private static final String password = "12qazwsxEDC";
+
     public static void connectDatabase() throws SQLException, ClassNotFoundException {
         registerDriver();
-
-        try {
-            connection = DriverManager.getConnection(connectionString, "root", "12qazwsxEDC");
-        }
-        catch (SQLException exception) {
-            System.out.println("Connection failed" + exception);
-            throw exception;
-        }
+        createConnection();
     }
 
-    public static void registerDriver() throws ClassNotFoundException {
+    private static void registerDriver() throws ClassNotFoundException {
         try {
             Class.forName(JDBC_DRIVER);
         }
@@ -34,6 +31,16 @@ public class DatabaseUtility {
             throw exception;
         }
         System.out.println("MySQL JDBC Driver has been registered");
+    }
+
+    private static void createConnection() throws SQLException {
+        try {
+            connection = DriverManager.getConnection(connectionString, user, password);
+        }
+        catch (SQLException exception) {
+            System.out.println("Connection failed" + exception);
+            throw exception;
+        }
     }
 
     public static void disconnectDatabase() throws SQLException {
