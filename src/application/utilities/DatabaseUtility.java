@@ -1,9 +1,7 @@
 package application.utilities;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.sun.rowset.CachedRowSetImpl;
+import java.sql.*;
 
 public class DatabaseUtility {
 
@@ -72,5 +70,32 @@ public class DatabaseUtility {
             }
             disconnectDatabase();
         }
+    }
+
+    public static ResultSet execute(String SQLQuery) throws SQLException, ClassNotFoundException {
+        Statement statement = null;
+        ResultSet resultSet = null;
+        CachedRowSetImpl cachedRowSet;
+        try {
+            connectDatabase();
+            connection.createStatement();
+            resultSet = statement.executeQuery(SQLQuery);
+            cachedRowSet = new CachedRowSetImpl();
+            cachedRowSet.populate(resultSet);
+        }
+        catch (SQLException exception) {
+            System.out.println("Execute error " + exception);
+            throw exception;
+        }
+        finally {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+            disconnectDatabase();
+        }
+        return cachedRowSet;
     }
 }
