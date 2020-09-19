@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CountyDAO {
@@ -29,7 +28,7 @@ public class CountyDAO {
     }
 
     public boolean updateCountry(Country country) throws SQLException {
-        boolean rowUpdated;
+        boolean rowUpdated = false;
         try (Connection connection = DatabaseUtility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ID)) {
             preparedStatement.setString(1, country.getName());
@@ -71,5 +70,15 @@ public class CountyDAO {
             }
         }
         return countries;
+    }
+
+    public boolean deleteUser(int id) throws SQLException {
+        boolean rowDeleted = false;
+        try (Connection connection = DatabaseUtility.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ID)) {
+            preparedStatement.setInt(1, id);
+            rowDeleted = preparedStatement.executeUpdate() > 0;
+        }
+        return rowDeleted;
     }
 }
