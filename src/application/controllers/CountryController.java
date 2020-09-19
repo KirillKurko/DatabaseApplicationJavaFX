@@ -26,7 +26,7 @@ public class CountryController {
     private TableView tableView;
 
     public void add() throws SQLException, ClassNotFoundException {
-        CountyDAO.addCountry();
+        //CountyDAO.addCountry();
     }
 
     public void edit() {
