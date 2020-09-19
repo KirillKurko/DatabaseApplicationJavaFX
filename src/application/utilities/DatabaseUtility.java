@@ -3,6 +3,7 @@ package application.utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DatabaseUtility {
 
@@ -51,6 +52,25 @@ public class DatabaseUtility {
         }
         catch (Exception exception) {
             throw exception;
+        }
+    }
+
+    public static void executeQuery(String SQLStatement) throws SQLException, ClassNotFoundException {
+        Statement statement = null;
+        try {
+            connectDatabase();
+            connection.createStatement();
+            statement.executeUpdate(SQLStatement);
+        }
+        catch (SQLException exception) {
+            System.out.println("Executing query error " + exception);
+            throw exception;
+        }
+        finally {
+            if (statement != null) {
+                statement.close();
+            }
+            disconnectDatabase();
         }
     }
 }
