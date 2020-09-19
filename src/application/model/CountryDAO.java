@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountyDAO {
+public class CountryDAO {
 
     private static final String INSERT_COUNTRY = "INSERT INTO Countries(name, capital, language) VALUES (?, ?, ?);";
     private static final String UPDATE_ID = "UPDATE Countries SET name = ?, capital = ?, language = ? WHERE id = ?;";
@@ -17,7 +17,7 @@ public class CountyDAO {
     private static final String SELECT_ALL_COUNTRIES = "SELECT * FROM Countries;";
     private static final String DELETE_ID = "DELETE FROM Countries WHERE id = ?;";
 
-    public void insertCountry(Country country) throws SQLException {
+    public void insertCountry(Country country) {
         try (Connection connection = DatabaseUtility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_COUNTRY)) {
             preparedStatement.setString(1, country.getName());
@@ -25,9 +25,12 @@ public class CountyDAO {
             preparedStatement.setString(3, country.getLanguage());
             preparedStatement.executeUpdate();
         }
+        catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 
-    public boolean updateCountry(Country country) throws SQLException {
+    public boolean updateCountry(Country country) {
         boolean rowUpdated = false;
         try (Connection connection = DatabaseUtility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ID)) {
@@ -38,10 +41,13 @@ public class CountyDAO {
 
             rowUpdated = preparedStatement.executeUpdate() > 0;
         }
+        catch (SQLException exception) {
+            exception.printStackTrace();
+        }
         return rowUpdated;
     }
 
-    public Country selectCountry(int id) throws SQLException {
+    public Country selectCountry(int id) {
         Country country = null;
         try (Connection connection = DatabaseUtility.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ID)) {
@@ -53,10 +59,13 @@ public class CountyDAO {
                 country = new Country(id, name, capital, language);
             }
         }
+        catch (SQLException exception) {
+            exception.printStackTrace();
+        }
         return country;
     }
 
-    public List<Country> selectAllCountries() throws SQLException {
+    public List<Country> selectAllCountries() {
         List<Country> countries = new ArrayList<>();
         try (Connection connection = DatabaseUtility.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_COUNTRIES)) {
@@ -69,15 +78,21 @@ public class CountyDAO {
                 countries.add(new Country(id, name, capital, language));
             }
         }
+        catch (SQLException exception) {
+            exception.printStackTrace();
+        }
         return countries;
     }
 
-    public boolean deleteUser(int id) throws SQLException {
+    public boolean deleteUser(int id) {
         boolean rowDeleted = false;
         try (Connection connection = DatabaseUtility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ID)) {
             preparedStatement.setInt(1, id);
             rowDeleted = preparedStatement.executeUpdate() > 0;
+        }
+        catch (SQLException exception) {
+            exception.printStackTrace();
         }
         return rowDeleted;
     }

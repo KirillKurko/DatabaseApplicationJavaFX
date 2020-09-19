@@ -1,6 +1,5 @@
 package application.controllers;
 
-import application.model.CountyDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,8 +9,6 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 
 public class CountryController {
 
