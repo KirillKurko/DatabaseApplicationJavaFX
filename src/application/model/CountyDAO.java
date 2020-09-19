@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CountyDAO {
 
@@ -52,5 +55,21 @@ public class CountyDAO {
             }
         }
         return country;
+    }
+
+    public List<Country> selectAllCountries() throws SQLException {
+        List<Country> countries = new ArrayList<>();
+        try (Connection connection = DatabaseUtility.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_COUNTRIES)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                String name = resultSet.getString("name");
+                String capital = resultSet.getString("capital");
+                String language = resultSet.getString("language");
+                countries.add(new Country(id, name, capital, language));
+            }
+        }
+        return countries;
     }
 }
