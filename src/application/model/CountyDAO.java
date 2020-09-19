@@ -4,6 +4,7 @@ import application.utilities.DatabaseUtility;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CountyDAO {
@@ -36,5 +37,20 @@ public class CountyDAO {
             rowUpdated = preparedStatement.executeUpdate() > 0;
         }
         return rowUpdated;
+    }
+
+    public Country selectCountry(int id) throws SQLException {
+        Country country = null;
+        try (Connection connection = DatabaseUtility.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ID)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String capital = resultSet.getString("capital");
+                String language = resultSet.getString("language");
+                country = new Country(id, name, capital, language);
+            }
+        }
+        return country;
     }
 }
