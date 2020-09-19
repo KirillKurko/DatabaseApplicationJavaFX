@@ -30,4 +30,15 @@ public class DatabaseUtility {
             throw exception;
         }
     }
+
+    public static void disconnectDatabase() throws SQLException {
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        catch (Exception exception) {
+            throw exception;
+        }
+    }
 }
