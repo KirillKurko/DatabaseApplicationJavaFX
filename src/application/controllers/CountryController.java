@@ -1,10 +1,32 @@
 package application.controllers;
 
-import javafx.event.ActionEvent;
+import application.model.CountyDAO;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+
+import java.sql.SQLException;
+
 
 public class CountryController {
 
-    public void add() {
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private Button editButton;
+
+    @FXML
+    private Button deleteButton;
+
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    private TableView tableView;
+
+    public void add() throws SQLException, ClassNotFoundException {
+        CountyDAO.addCountry();
     }
 
     public void edit() {
