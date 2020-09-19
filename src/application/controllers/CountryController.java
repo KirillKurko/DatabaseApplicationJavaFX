@@ -2,9 +2,14 @@ package application.controllers;
 
 import application.model.CountyDAO;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 
@@ -25,8 +30,22 @@ public class CountryController {
     @FXML
     private TableView tableView;
 
-    public void add() throws SQLException, ClassNotFoundException {
-        //CountyDAO.addCountry();
+    public void showAddCountryWindow() {
+        try {
+            Stage stage = new Stage();
+            Parent node = FXMLLoader.load(getClass().getResource("/resources/fxml/addCountryLayout.fxml"));
+            Scene scene = new Scene(node);
+
+            stage.setScene(scene);
+            stage.setTitle("Add country");
+            stage.setWidth(270);
+            stage.setHeight(270);
+
+            stage.show();
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void edit() {

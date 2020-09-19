@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:controller="application.controllers.AddCountryController" xmlns:fx="http://javafx.com/javafx/1" prefWidth="270" prefHeight="270">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+    <Group fx:id="labels">
+        <Label fx:id="nameLabel" text="Name" prefWidth="100" prefHeight="50" layoutX="10" layoutY="10"/>
+        <Label fx:id="capitalLabel" text="Capital" prefWidth="100" prefHeight="50" layoutX="10" layoutY="70"/>
+        <Label fx:id="languageLabel" text="Language" prefWidth="100" prefHeight="50" layoutX="10" layoutY="130"/>
+    </Group>
+    <Group fx:id="textFields">
+        <TextField fx:id="nameTextField" prefWidth="150" prefHeight="50" layoutX="110" layoutY="10"/>
+        <TextField fx:id="capitalTextField" prefWidth="150" prefHeight="50" layoutX="110" layoutY="70"/>
+        <TextField fx:id="languageTextField" prefWidth="150" prefHeight="50" layoutX="110" layoutY="130"/>
+    </Group>
+    <Group fx:id="buttons">
+        <Button fx:id="addCountryButton" text="Add country" prefWidth="150" prefHeight="50" layoutX="60" layoutY="190"/>
+    </Group>
+</BorderPane>
