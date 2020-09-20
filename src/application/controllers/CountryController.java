@@ -48,7 +48,7 @@ public class CountryController {
     public void showRemoveCountryWindow() {
         try {
             Stage stage = new Stage();
-            Parent node = FXMLLoader.load(getClass().getResource("/resources/fxml/removeCountryLayout.fxml"));
+            Parent node = FXMLLoader.load(getClass().getResource("/resources/fxml/deleteCountryLayout.fxml"));
             Scene scene = new Scene(node);
 
             stage.setScene(scene);

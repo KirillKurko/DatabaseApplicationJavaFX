@@ -32,23 +32,4 @@ public class AddCountryController {
         capitalTextField.setText("");
         languageTextField.setText("");
     }
-
-
-//    private boolean inputIsValid() {
-//        return nameValidation();
-//    }
-
-//    private boolean nameValidation() {
-//        boolean empty = nameTextField.getText().trim().isEmpty();
-//        BackgroundFill backgroundFill;
-//        if (empty) {
-//             backgroundFill = new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY);
-//        }
-//        else {
-//            backgroundFill = new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.);
-//        }
-//        Background background = new Background(backgroundFill);
-//        nameTextField.setBackground(background);
-//        return empty;
-//    }
 }

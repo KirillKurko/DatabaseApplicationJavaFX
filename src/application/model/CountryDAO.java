@@ -84,7 +84,7 @@ public class CountryDAO {
         return countries;
     }
 
-    public boolean deleteUser(int id) {
+    public boolean deleteCountry(int id) {
         boolean rowDeleted = false;
         try (Connection connection = DatabaseUtility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ID)) {

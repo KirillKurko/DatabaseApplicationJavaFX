@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 
-<BorderPane fx:controller="application.controllers.RemoveCountryController" xmlns:fx="http://javafx.com/javafx/1" prefWidth="300" prefHeight="300">
+<BorderPane fx:controller="application.controllers.DeleteCountryController" xmlns:fx="http://javafx.com/javafx/1" prefWidth="300" prefHeight="300">
     <padding><Insets top="30" right="50" bottom="30" left="50"/></padding>
     <Group fx:id="labels">
         <Label fx:id="idLabel" text="ID" layoutX="50" layoutY="60" prefWidth="30" prefHeight="50"/>
@@ -14,6 +14,6 @@
         <TextField fx:id="idTextField" layoutX="100" layoutY="60" prefWidth="130" prefHeight="50"/>
     </Group>
     <Group fx:id="buttons">
-        <Button fx:id="deleteButton" text="Delete" layoutX="90" layoutY="210" prefWidth="100" prefHeight="50"/>
+        <Button fx:id="deleteButton" text="Delete" layoutX="90" layoutY="210" prefWidth="100" prefHeight="50" onAction="#deleteCountry"/>
     </Group>
 </BorderPane>
