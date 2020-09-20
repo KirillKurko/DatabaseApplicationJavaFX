@@ -11,12 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class CountryController {
 
-    @FXML
-    CountryDAO countryDAO = new CountryDAO();
+    public CountryDAO countryDAO = new CountryDAO();
 
     @FXML
     public TableColumn<Country, Integer> countryIdColumn;
@@ -48,49 +48,31 @@ public class CountryController {
     }
 
     public void showAddCountryWindow() {
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/addCountryLayout.fxml"));
-            Parent node = loader.load();
-            AddCountryController addCountryController = (AddCountryController) loader.getController();
-            addCountryController.init(this);
-            Scene scene = new Scene(node);
-
-            stage.setScene(scene);
-            stage.setTitle("Add country");
-            stage.setWidth(270);
-            stage.setHeight(270);
-            stage.show();
-        }
-        catch (IOException exception) {
-            exception.printStackTrace();
-        }
+        createCustomWindow("/resources/fxml/addCountryLayout.fxml","Add country", 270, 270);
     }
 
     public void showRemoveCountryWindow() {
-        try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/deleteCountryLayout.fxml"));
-            Parent node = loader.load();
-            DeleteCountryController deleteCountryController = (DeleteCountryController) loader.getController();
-            deleteCountryController.init(this);
-            Scene scene = new Scene(node);
-
-            stage.setScene(scene);
-            stage.setTitle("Delete country");
-            stage.setWidth(270);
-            stage.setHeight(300);
-
-            stage.show();
-        }
-        catch (IOException exception) {
-            exception.printStackTrace();
-        }
+        createCustomWindow("/resources/fxml/deleteCountryLayout.fxml", "Delete country", 270, 300);
     }
 
-    public void edit() {
-    }
+    private void createCustomWindow(String layoutURL, String title, int width, int height) {
+       try {
+           Stage stage = new Stage();
+           FXMLLoader loader = new FXMLLoader(getClass().getResource(layoutURL));
+           Parent node = loader.load();
+           InitializableController controller = loader.getController();
+           controller.init(this);
+           Scene scene = new Scene(node);
 
-    public void search() {
+           stage.setScene(scene);
+           stage.setTitle(title);
+           stage.setWidth(width);
+           stage.setHeight(height);
+
+           stage.show();
+       }
+       catch (IOException exception) {
+           exception.printStackTrace();
+       }
     }
 }

@@ -9,9 +9,9 @@
     <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
     <Group fx:id="buttons">
         <Button fx:id="addButton" text="Add" prefWidth="150" prefHeight="50" textAlignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0" onAction="#showAddCountryWindow"/>
-        <Button fx:id="editButton" text="Edit" layoutX="150" prefWidth="150" prefHeight="50" textAlignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="1" onAction="#edit"/>
+        <Button fx:id="editButton" text="Edit" layoutX="150" prefWidth="150" prefHeight="50" textAlignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="1" />
         <Button fx:id="deleteButton" text="Delete" layoutX="300" prefWidth="150" prefHeight="50" textAlignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="2" onAction="#showRemoveCountryWindow"/>
-        <Button fx:id="searchButton" text="Search" layoutX="450" prefWidth="150" prefHeight="50" textAlignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="3" onAction="#search"/>
+        <Button fx:id="searchButton" text="Search" layoutX="450" prefWidth="150" prefHeight="50" textAlignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="3" />
     </Group>
     <TableView fx:id="tableView" layoutY="180" prefWidth="600" prefHeight="600" GridPane.rowIndex="1" GridPane.columnIndex="0">
         <columns>

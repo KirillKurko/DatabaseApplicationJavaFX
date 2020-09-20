@@ -13,7 +13,7 @@ public class DeleteCountryController implements InitializableController {
 
     @FXML
     private Button deleteButton;
-    
+
     public void init(CountryController countryController) {
         this.countryController = countryController;
     }
