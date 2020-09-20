@@ -40,5 +40,6 @@ public class EditCountryController implements InitializableController {
         nameTextField.setText("");
         capitalTextField.setText("");
         languageTextField.setText("");
+        idTextField.requestFocus();
     }
 }

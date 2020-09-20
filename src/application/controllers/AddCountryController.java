@@ -35,5 +35,6 @@ public class AddCountryController implements InitializableController {
         nameTextField.setText("");
         capitalTextField.setText("");
         languageTextField.setText("");
+        nameTextField.requestFocus();
     }
 }

@@ -32,5 +32,6 @@ public class DeleteCountryController implements InitializableController {
 
     private void reset() {
         idTextField.setText("");
+        idTextField.requestFocus();
     }
 }
