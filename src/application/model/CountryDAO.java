@@ -1,7 +1,6 @@
 package application.model;
 
 import application.utilities.DatabaseUtility;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

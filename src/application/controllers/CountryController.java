@@ -58,6 +58,10 @@ public class CountryController {
         createCustomWindow("/resources/fxml/editCountryLayout.fxml", "Edit country", 270, 330);
     }
 
+    public void showSearchCountryWindow() {
+        createCustomWindow("/resources/fxml/searchCountryLayout.fxml", "Search country", 370, 310);
+    }
+
     private void createCustomWindow(String layoutURL, String title, int width, int height) {
        try {
            Stage stage = new Stage();
