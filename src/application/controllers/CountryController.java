@@ -35,8 +35,26 @@ public class CountryController {
 
             stage.setScene(scene);
             stage.setTitle("Add country");
+            stage.setWidth(300);
+            stage.setHeight(300);
+
+            stage.show();
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public void showRemoveCountryWindow() {
+        try {
+            Stage stage = new Stage();
+            Parent node = FXMLLoader.load(getClass().getResource("/resources/fxml/removeCountryLayout.fxml"));
+            Scene scene = new Scene(node);
+
+            stage.setScene(scene);
+            stage.setTitle("Delete country");
             stage.setWidth(270);
-            stage.setHeight(270);
+            stage.setHeight(300);
 
             stage.show();
         }
