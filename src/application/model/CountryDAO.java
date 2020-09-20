@@ -1,6 +1,8 @@
 package application.model;
 
 import application.utilities.DatabaseUtility;
+import javafx.collections.ObservableList;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +14,7 @@ public class CountryDAO {
 
     private static final String INSERT_COUNTRY = "INSERT INTO Countries(name, capital, language) VALUES (?, ?, ?);";
     private static final String UPDATE_ID = "UPDATE Countries SET name = ?, capital = ?, language = ? WHERE id = ?;";
-    private static final String SELECT_ID = "SELECT * Countries WHERE id = ?;";
+    private static final String SELECT_ID = "SELECT * FROM Countries WHERE id = ?;";
     private static final String SELECT_ALL_COUNTRIES = "SELECT * FROM Countries;";
     private static final String DELETE_ID = "DELETE FROM Countries WHERE id = ?;";
 
@@ -46,22 +48,23 @@ public class CountryDAO {
         return rowUpdated;
     }
 
-    public Country selectCountry(int id) {
-        Country country = null;
+    public List<Country> selectCountryByID(int id) {
+        List<Country> countries = new ArrayList<>();
         try (Connection connection = DatabaseUtility.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ID)) {
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
                 String capital = resultSet.getString("capital");
                 String language = resultSet.getString("language");
-                country = new Country(id, name, capital, language);
+                countries.add(new Country(id, name, capital, language));
             }
         }
         catch (SQLException exception) {
             exception.printStackTrace();
         }
-        return country;
+        return countries;
     }
 
     public List<Country> selectAllCountries() {

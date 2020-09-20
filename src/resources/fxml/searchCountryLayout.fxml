@@ -5,20 +5,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane fx:controller="application.controllers.SearchCountryController" xmlns:fx="http://javafx.com/javafx/1" prefWidth="520" prefHeight="290">
+<BorderPane fx:controller="application.controllers.SearchCountryController" xmlns:fx="http://javafx.com/javafx/1" prefWidth="520" prefHeight="310">
     <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
     <Group fx:id="toggleButtons">
-        <ToggleButton fx:id="searchAllButton" text="All" prefWidth="100" prefHeight="50" layoutX="10" layoutY="10" textAlignment="CENTER"/>
-        <ToggleButton fx:id="searchByIdButton" text="ID" prefWidth="100" prefHeight="50" layoutX="110" layoutY="10" textAlignment="CENTER"/>
-        <ToggleButton fx:id="searchByNameButton" text="Name" prefWidth="100" prefHeight="50" layoutX="210" layoutY="10" textAlignment="CENTER"/>
-        <ToggleButton fx:id="searchByCapitalButton" text="Capital" prefWidth="100" prefHeight="50" layoutX="310" layoutY="10" textAlignment="CENTER"/>
-        <ToggleButton fx:id="searchByLanguageButton" text="Language" prefWidth="100" prefHeight="50" layoutX="410" layoutY="10" textAlignment="CENTER"/>
+        <RadioButton fx:id="searchAllButton" text="All" prefWidth="100" prefHeight="50" layoutX="10" layoutY="10" textAlignment="CENTER" onAction="#searchAllCountries"/>
+        <RadioButton fx:id="searchByIdButton" text="ID" prefWidth="100" prefHeight="50" layoutX="110" layoutY="10" textAlignment="CENTER" onAction="#searchByID"/>
+        <RadioButton fx:id="searchByNameButton" text="Name" prefWidth="100" prefHeight="50" layoutX="210" layoutY="10" textAlignment="CENTER"/>
+        <RadioButton fx:id="searchByCapitalButton" text="Capital" prefWidth="100" prefHeight="50" layoutX="310" layoutY="10" textAlignment="CENTER"/>
+        <RadioButton fx:id="searchByLanguageButton" text="Language" prefWidth="100" prefHeight="50" layoutX="410" layoutY="10" textAlignment="CENTER"/>
     </Group>
     <Group fx:id="searchFields">
-        <Label fx:id="searchFieldLabel" text="ID" prefWidth="100" prefHeight="50" layoutX="135" layoutY="120"/>
-        <TextField fx:id="searchFieldTextField" prefWidth="150" prefHeight="50" layoutX="235" layoutY="120"/>
+        <Label fx:id="searchFieldLabel" text="" prefWidth="100" prefHeight="50" layoutX="135" layoutY="120" visible="false"/>
+        <TextField fx:id="searchFieldTextField" prefWidth="150" prefHeight="50" layoutX="235" layoutY="120" visible="false"/>
     </Group>
     <Group fx:id="Buttons">
-        <Button fx:id="searchButton" text="Search" prefWidth="150" prefHeight="50" layoutX="185" layoutY="230" textAlignment="CENTER"/>
+        <Button fx:id="searchButton" text="Search" prefWidth="150" prefHeight="50" layoutX="185" layoutY="230" textAlignment="CENTER" onAction="#search"/>
     </Group>
 </BorderPane>

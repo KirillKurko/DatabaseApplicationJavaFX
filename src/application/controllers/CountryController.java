@@ -43,6 +43,10 @@ public class CountryController {
 
     public void refreshTable() {
         ObservableList<Country> countries = FXCollections.observableArrayList(countryDAO.selectAllCountries());
+        populateTable(countries);
+    }
+
+    public void populateTable(ObservableList<Country> countries) {
         tableView.setItems(countries);
     }
 
@@ -59,7 +63,7 @@ public class CountryController {
     }
 
     public void showSearchCountryWindow() {
-        createCustomWindow("/resources/fxml/searchCountryLayout.fxml", "Search country", 370, 310);
+        createCustomWindow("/resources/fxml/searchCountryLayout.fxml", "Search country", 520, 310);
     }
 
     private void createCustomWindow(String layoutURL, String title, int width, int height) {
