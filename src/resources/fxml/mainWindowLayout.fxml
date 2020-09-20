@@ -15,13 +15,13 @@
     </Group>
     <TableView fx:id="tableView" layoutY="180" prefWidth="600" prefHeight="600" GridPane.rowIndex="1" GridPane.columnIndex="0">
         <columns>
-            <TableColumn text="ID" prefWidth="150">
+            <TableColumn fx:id="countryIdColumn" text="ID" prefWidth="150">
             </TableColumn>
-            <TableColumn text="Name" prefWidth="150">
+            <TableColumn fx:id="countryNameColumn" text="Name" prefWidth="150">
             </TableColumn>
-            <TableColumn text="Capital" prefWidth="150">
+            <TableColumn fx:id="countryCapitalColumn" text="Capital" prefWidth="150">
             </TableColumn>
-            <TableColumn text="Language" prefWidth="150">
+            <TableColumn fx:id="countryLanguageColumn" text="Language" prefWidth="150">
             </TableColumn>
         </columns>
     </TableView>
