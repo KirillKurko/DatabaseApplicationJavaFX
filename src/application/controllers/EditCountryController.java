@@ -25,6 +25,13 @@ public class EditCountryController implements InitializableController {
     }
 
     public void editCountry() {
+        int id = Integer.parseInt(idTextField.getText());
+        String name = nameTextField.getText();
+        String capital = capitalTextField.getText();
+        String language = languageTextField.getText();
+        Country country = new Country(id, name, capital, language);
+        countryController.countryDAO.updateCountry(country);
+        countryController.refreshTable();
         reset();
     }
 
