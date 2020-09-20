@@ -1,8 +1,6 @@
 package application.model;
 
 import application.utilities.DatabaseUtility;
-import javafx.collections.ObservableList;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +13,9 @@ public class CountryDAO {
     private static final String INSERT_COUNTRY = "INSERT INTO Countries(name, capital, language) VALUES (?, ?, ?);";
     private static final String UPDATE_ID = "UPDATE Countries SET name = ?, capital = ?, language = ? WHERE id = ?;";
     private static final String SELECT_ID = "SELECT * FROM Countries WHERE id = ?;";
+    private static final String SELECT_NAME = "SELECT * FROM Countries WHERE name = ?;";
+    private static final String SELECT_CAPITAL = "SELECT * FROM Countries WHERE capital = ?;";
+    private static final String SELECT_LANGUAGE = "SELECT * FROM Countries WHERE language = ?;";
     private static final String SELECT_ALL_COUNTRIES = "SELECT * FROM Countries;";
     private static final String DELETE_ID = "DELETE FROM Countries WHERE id = ?;";
 
@@ -58,6 +59,63 @@ public class CountryDAO {
                 String name = resultSet.getString("name");
                 String capital = resultSet.getString("capital");
                 String language = resultSet.getString("language");
+                countries.add(new Country(id, name, capital, language));
+            }
+        }
+        catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return countries;
+    }
+
+    public List<Country> selectCountryByName(String name) {
+        List<Country> countries = new ArrayList<>();
+        try (Connection connection = DatabaseUtility.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_NAME)) {
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String capital = resultSet.getString("capital");
+                String language = resultSet.getString("language");
+                countries.add(new Country(id, name, capital, language));
+            }
+        }
+        catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return countries;
+    }
+
+    public List<Country> selectCountryByCapital(String capital) {
+        List<Country> countries = new ArrayList<>();
+        try (Connection connection = DatabaseUtility.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CAPITAL)) {
+            preparedStatement.setString(1, capital);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String language = resultSet.getString("language");
+                countries.add(new Country(id, name, capital, language));
+            }
+        }
+        catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return countries;
+    }
+
+    public List<Country> selectCountryByLanguage(String language) {
+        List<Country> countries = new ArrayList<>();
+        try (Connection connection = DatabaseUtility.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_LANGUAGE)) {
+            preparedStatement.setString(1, language);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String capital = resultSet.getString("capital");
                 countries.add(new Country(id, name, capital, language));
             }
         }

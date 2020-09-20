@@ -10,9 +10,9 @@
     <Group fx:id="toggleButtons">
         <RadioButton fx:id="searchAllButton" text="All" prefWidth="100" prefHeight="50" layoutX="10" layoutY="10" textAlignment="CENTER" onAction="#searchAllCountries"/>
         <RadioButton fx:id="searchByIdButton" text="ID" prefWidth="100" prefHeight="50" layoutX="110" layoutY="10" textAlignment="CENTER" onAction="#searchByID"/>
-        <RadioButton fx:id="searchByNameButton" text="Name" prefWidth="100" prefHeight="50" layoutX="210" layoutY="10" textAlignment="CENTER"/>
-        <RadioButton fx:id="searchByCapitalButton" text="Capital" prefWidth="100" prefHeight="50" layoutX="310" layoutY="10" textAlignment="CENTER"/>
-        <RadioButton fx:id="searchByLanguageButton" text="Language" prefWidth="100" prefHeight="50" layoutX="410" layoutY="10" textAlignment="CENTER"/>
+        <RadioButton fx:id="searchByNameButton" text="Name" prefWidth="100" prefHeight="50" layoutX="210" layoutY="10" textAlignment="CENTER" onAction="#searchByName"/>
+        <RadioButton fx:id="searchByCapitalButton" text="Capital" prefWidth="100" prefHeight="50" layoutX="310" layoutY="10" textAlignment="CENTER" onAction="#searchByCapital"/>
+        <RadioButton fx:id="searchByLanguageButton" text="Language" prefWidth="100" prefHeight="50" layoutX="410" layoutY="10" textAlignment="CENTER" onAction="#searchByLanguage"/>
     </Group>
     <Group fx:id="searchFields">
         <Label fx:id="searchFieldLabel" text="" prefWidth="100" prefHeight="50" layoutX="135" layoutY="120" visible="false"/>
