@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class CountryController {
@@ -53,6 +52,10 @@ public class CountryController {
 
     public void showRemoveCountryWindow() {
         createCustomWindow("/resources/fxml/deleteCountryLayout.fxml", "Delete country", 270, 300);
+    }
+
+    public void showEditCountryWindow() {
+        createCustomWindow("/resources/fxml/editCountryLayout.fxml", "Edit country", 270, 330);
     }
 
     private void createCustomWindow(String layoutURL, String title, int width, int height) {
