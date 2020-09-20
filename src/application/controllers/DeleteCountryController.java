@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class DeleteCountryController {
+public class DeleteCountryController implements InitializableController {
 
     private CountryController countryController;
 
@@ -13,7 +13,7 @@ public class DeleteCountryController {
 
     @FXML
     private Button deleteButton;
-
+    
     public void init(CountryController countryController) {
         this.countryController = countryController;
     }

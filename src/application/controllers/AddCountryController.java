@@ -4,7 +4,7 @@ import application.model.Country;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class AddCountryController {
+public class AddCountryController implements InitializableController {
 
     private CountryController countryController;
 
