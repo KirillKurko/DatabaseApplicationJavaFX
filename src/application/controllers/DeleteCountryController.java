@@ -1,13 +1,12 @@
 package application.controllers;
 
-import application.model.CountryDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class DeleteCountryController {
 
-    CountryDAO countryDAO = new CountryDAO();
+    private CountryController countryController;
 
     @FXML
     private TextField idTextField;
@@ -15,9 +14,14 @@ public class DeleteCountryController {
     @FXML
     private Button deleteButton;
 
+    public void init(CountryController countryController) {
+        this.countryController = countryController;
+    }
+
     public void deleteCountry() {
         int id = getID();
-        countryDAO.deleteCountry(id);
+        countryController.countryDAO.deleteCountry(id);
+        countryController.refreshTable();
         reset();
     }
 

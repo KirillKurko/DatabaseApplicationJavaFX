@@ -11,27 +11,27 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class CountryController {
 
+    @FXML
     CountryDAO countryDAO = new CountryDAO();
 
     @FXML
-    private TableColumn<Country, Integer> countryIdColumn;
+    public TableColumn<Country, Integer> countryIdColumn;
 
     @FXML
-    private TableColumn<Country, String> countryNameColumn;
+    public TableColumn<Country, String> countryNameColumn;
 
     @FXML
-    private TableColumn<Country, String> countryCapitalColumn;
+    public TableColumn<Country, String> countryCapitalColumn;
 
     @FXML
-    private TableColumn<Country, String> countryLanguageColumn;
+    public TableColumn<Country, String> countryLanguageColumn;
 
     @FXML
-    private TableView<Country> tableView;
+    public TableView<Country> tableView;
 
     @FXML
     private void initialize() {
@@ -39,25 +39,27 @@ public class CountryController {
         countryNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         countryCapitalColumn.setCellValueFactory(cellData -> cellData.getValue().getCapitalProperty());
         countryLanguageColumn.setCellValueFactory(cellData -> cellData.getValue().getLanguageProperty());
-        ObservableList<Country> countries = FXCollections.observableArrayList(countryDAO.selectAllCountries());
-        populateTable(countries);
+        refreshTable();
     }
 
-    private void populateTable(ObservableList<Country> countries) {
+    public void refreshTable() {
+        ObservableList<Country> countries = FXCollections.observableArrayList(countryDAO.selectAllCountries());
         tableView.setItems(countries);
     }
-    
+
     public void showAddCountryWindow() {
         try {
             Stage stage = new Stage();
-            Parent node = FXMLLoader.load(getClass().getResource("/resources/fxml/addCountryLayout.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/addCountryLayout.fxml"));
+            Parent node = loader.load();
+            AddCountryController addCountryController = (AddCountryController) loader.getController();
+            addCountryController.init(this);
             Scene scene = new Scene(node);
 
             stage.setScene(scene);
             stage.setTitle("Add country");
-            stage.setWidth(300);
-            stage.setHeight(300);
-
+            stage.setWidth(270);
+            stage.setHeight(270);
             stage.show();
         }
         catch (IOException exception) {
@@ -68,7 +70,10 @@ public class CountryController {
     public void showRemoveCountryWindow() {
         try {
             Stage stage = new Stage();
-            Parent node = FXMLLoader.load(getClass().getResource("/resources/fxml/deleteCountryLayout.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/deleteCountryLayout.fxml"));
+            Parent node = loader.load();
+            DeleteCountryController deleteCountryController = (DeleteCountryController) loader.getController();
+            deleteCountryController.init(this);
             Scene scene = new Scene(node);
 
             stage.setScene(scene);
