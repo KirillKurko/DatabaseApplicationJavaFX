@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.BorderPane?>
 <BorderPane fx:controller="application.controllers.SearchCountryController" xmlns:fx="http://javafx.com/javafx/1" prefWidth="520" prefHeight="310">
     <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
     <Group fx:id="toggleButtons">
-        <RadioButton fx:id="searchAllButton" text="All" prefWidth="100" prefHeight="50" layoutX="10" layoutY="10" textAlignment="CENTER" onAction="#searchAllCountries"/>
-        <RadioButton fx:id="searchByIdButton" text="ID" prefWidth="100" prefHeight="50" layoutX="110" layoutY="10" textAlignment="CENTER" onAction="#searchByID"/>
-        <RadioButton fx:id="searchByNameButton" text="Name" prefWidth="100" prefHeight="50" layoutX="210" layoutY="10" textAlignment="CENTER" onAction="#searchByName"/>
-        <RadioButton fx:id="searchByCapitalButton" text="Capital" prefWidth="100" prefHeight="50" layoutX="310" layoutY="10" textAlignment="CENTER" onAction="#searchByCapital"/>
-        <RadioButton fx:id="searchByLanguageButton" text="Language" prefWidth="100" prefHeight="50" layoutX="410" layoutY="10" textAlignment="CENTER" onAction="#searchByLanguage"/>
+        <RadioButton fx:id="searchAllButton" text="All" prefWidth="100" prefHeight="50" layoutX="10" layoutY="10" textAlignment="CENTER" onAction="#searchAllCountries">
+            <toggleGroup>
+                <ToggleGroup fx:id="toggleGroup"/>
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="searchByIdButton" text="ID" prefWidth="100" prefHeight="50" layoutX="110" layoutY="10" textAlignment="CENTER" onAction="#searchByID">
+            <toggleGroup>
+                <fx:reference source="toggleGroup"/>
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="searchByNameButton" text="Name" prefWidth="100" prefHeight="50" layoutX="210" layoutY="10" textAlignment="CENTER" onAction="#searchByName">
+            <toggleGroup>
+                <fx:reference source="toggleGroup"/>
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="searchByCapitalButton" text="Capital" prefWidth="100" prefHeight="50" layoutX="310" layoutY="10" textAlignment="CENTER" onAction="#searchByCapital">
+            <toggleGroup>
+                <fx:reference source="toggleGroup"/>
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="searchByLanguageButton" text="Language" prefWidth="100" prefHeight="50" layoutX="410" layoutY="10" textAlignment="CENTER" onAction="#searchByLanguage">
+            <toggleGroup>
+                <fx:reference source="toggleGroup"/>
+            </toggleGroup>
+        </RadioButton>
     </Group>
     <Group fx:id="searchFields">
         <Label fx:id="searchFieldLabel" text="" prefWidth="100" prefHeight="50" layoutX="135" layoutY="120" visible="false"/>

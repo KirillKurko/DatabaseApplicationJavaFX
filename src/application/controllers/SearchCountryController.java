@@ -34,17 +34,6 @@ public class SearchCountryController implements InitializableController {
     @FXML
     private ToggleGroup toggleGroup;
 
-    @FXML
-    private void initialize() {
-        toggleGroup = new ToggleGroup();
-        searchAllButton.setToggleGroup(toggleGroup);
-        searchByIdButton.setToggleGroup(toggleGroup);
-        searchByNameButton.setToggleGroup(toggleGroup);
-        searchByCapitalButton.setToggleGroup(toggleGroup);
-        searchByLanguageButton.setToggleGroup(toggleGroup);
-        searchAllButton.requestFocus();
-    }
-
     public void init(CountryController countryController) {
         this.countryController = countryController;
     }
@@ -83,29 +72,29 @@ public class SearchCountryController implements InitializableController {
     }
 
     public void search() {
+        ObservableList<Country> countries = null;
         if (searchAllButton.isSelected()) {
-            countryController.refreshTable();
+            countries = FXCollections.observableArrayList(countryController.countryDAO.selectAllCountries());
         }
         else if (searchByIdButton.isSelected()) {
             int id = Integer.parseInt(searchFieldTextField.getText());
-            ObservableList<Country> countries = FXCollections.observableArrayList(countryController.countryDAO.selectCountryByID(id));
-            countryController.populateTable(countries);
+            countries = FXCollections.observableArrayList(countryController.countryDAO.selectCountryByID(id));
+
         }
         else if (searchByNameButton.isSelected()) {
             String name = searchFieldTextField.getText();
-            ObservableList<Country> countries = FXCollections.observableArrayList(countryController.countryDAO.selectCountryByName(name));
-            countryController.populateTable(countries);
+            countries = FXCollections.observableArrayList(countryController.countryDAO.selectCountryByName(name));
+
         }
         else if (searchByCapitalButton.isSelected()) {
             String capital = searchFieldTextField.getText();
-            ObservableList<Country> countries = FXCollections.observableArrayList(countryController.countryDAO.selectCountryByCapital(capital));
-            countryController.populateTable(countries);
+            countries = FXCollections.observableArrayList(countryController.countryDAO.selectCountryByCapital(capital));
         }
         else if (searchByLanguageButton.isSelected()) {
             String language = searchFieldTextField.getText();
-            ObservableList<Country> countries = FXCollections.observableArrayList(countryController.countryDAO.selectCountryByLanguage(language));
-            countryController.populateTable(countries);
+            countries = FXCollections.observableArrayList(countryController.countryDAO.selectCountryByLanguage(language));
         }
+        countryController.populateTable(countries);
         searchFieldTextField.setText("");
     }
 }
