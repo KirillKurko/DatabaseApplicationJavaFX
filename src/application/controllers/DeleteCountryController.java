@@ -1,21 +1,23 @@
 package application.controllers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 
 public class DeleteCountryController implements InitializableController {
 
     private CountryController countryController;
 
     @FXML
-    private TextField idTextField;
+    private JFXTextField idTextField;
 
     @FXML
-    private Button deleteButton;
+    private JFXButton deleteButton;
 
     public void init(CountryController countryController) {
         this.countryController = countryController;
+        countryController.validator.setRequiredFieldValidator(idTextField);
+        countryController.validator.setNumberValidator(idTextField);
     }
 
     public void deleteCountry() {

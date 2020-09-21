@@ -1,0 +1,18 @@
+#pane {
+    -fx-background-color: rgb(234, 232, 255);
+}
+
+.button {
+    -fx-background-color: rgb(176, 215, 255);
+    -fx-text-fill: rgb(45, 49, 66);
+}
+
+.jfx-text-field {
+    -jfx-focus-color: rgb(45, 49, 66);
+    -jfx-unfocus-color: rgb(173, 172, 181);
+    -jfx-label-float: true;
+}
+
+.jfx-radio-button {
+    -jfx-selected-color: rgb(176, 215, 255);
+}

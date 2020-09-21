@@ -1,6 +1,8 @@
 package application.controllers;
 
 import application.model.Country;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,58 +13,49 @@ public class SearchCountryController implements InitializableController {
     private CountryController countryController;
 
     @FXML
-    private RadioButton searchAllButton;
+    private JFXRadioButton searchAllButton;
 
     @FXML
-    private RadioButton searchByIdButton;
+    private JFXRadioButton searchByIdButton;
 
     @FXML
-    private RadioButton searchByNameButton;
+    private JFXRadioButton searchByNameButton;
 
     @FXML
-    private RadioButton searchByCapitalButton;
+    private JFXRadioButton searchByCapitalButton;
 
     @FXML
-    private RadioButton searchByLanguageButton;
+    private JFXRadioButton searchByLanguageButton;
 
     @FXML
-    private Label searchFieldLabel;
-
-    @FXML
-    private TextField searchFieldTextField;
+    private JFXTextField searchFieldTextField;
 
     @FXML
     private ToggleGroup toggleGroup;
 
     public void init(CountryController countryController) {
         this.countryController = countryController;
+        countryController.validator.setRequiredFieldValidator(searchFieldTextField);
     }
 
     public void searchAllCountries() {
-        configureSearchComponents("All", false);
+        searchFieldTextField.setVisible(false);
     }
 
     public void searchByID() {
-        configureSearchComponents("ID", true);
+        searchFieldTextField.setVisible(true);
     }
 
     public void searchByName() {
-        configureSearchComponents("Name", true);
+        searchFieldTextField.setVisible(true);
     }
 
     public void searchByCapital() {
-        configureSearchComponents("Capital", true);
+        searchFieldTextField.setVisible(true);
     }
 
     public void searchByLanguage() {
-        configureSearchComponents("Language", true);
-    }
-
-    private void configureSearchComponents(String labelText, boolean visibility) {
-        searchFieldLabel.setVisible(visibility);
-        searchFieldTextField.setVisible(visibility);
-        searchFieldLabel.setText(labelText);
-        searchFieldTextField.setText("");
+        searchFieldTextField.setVisible(true);
     }
 
     public void search() {
@@ -89,6 +82,5 @@ public class SearchCountryController implements InitializableController {
             countries = FXCollections.observableArrayList(countryController.countryDAO.selectCountryByLanguage(language));
         }
         countryController.populateTable(countries);
-        searchFieldTextField.setText("");
     }
 }

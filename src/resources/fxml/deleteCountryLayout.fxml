@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
 
-<BorderPane fx:controller="application.controllers.DeleteCountryController" xmlns:fx="http://javafx.com/javafx/1" prefWidth="300" prefHeight="300">
+<BorderPane fx:id="pane" fx:controller="application.controllers.DeleteCountryController"
+            xmlns:fx="http://javafx.com/javafx/1" stylesheets="/resources/styles/style.css" prefWidth="400" prefHeight="230">
     <padding><Insets top="30" right="50" bottom="30" left="50"/></padding>
-    <Group fx:id="labels">
-        <Label fx:id="idLabel" text="ID" layoutX="50" layoutY="60" prefWidth="30" prefHeight="50"/>
-    </Group>
     <Group fx:id="textFields">
-        <TextField fx:id="idTextField" layoutX="100" layoutY="60" prefWidth="130" prefHeight="50"/>
+        <JFXTextField fx:id="idTextField" promptText="ID" prefWidth="300" prefHeight="20" layoutX="50" layoutY="50"/>
     </Group>
     <Group fx:id="buttons">
-        <Button fx:id="deleteButton" text="Delete" layoutX="90" layoutY="210" prefWidth="100" prefHeight="50" onAction="#deleteCountry"/>
+        <JFXButton fx:id="deleteButton" text="Delete" layoutY="160" prefWidth="400" prefHeight="50" onAction="#deleteCountry"/>
     </Group>
 </BorderPane>

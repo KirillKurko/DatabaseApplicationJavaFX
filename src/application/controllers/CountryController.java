@@ -2,6 +2,7 @@ package application.controllers;
 
 import application.model.Country;
 import application.model.CountryDAO;
+import application.utilities.ValidatorUtility;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +16,9 @@ import java.io.IOException;
 
 public class CountryController {
 
-    public CountryDAO countryDAO = new CountryDAO();
+    public CountryDAO countryDAO;
+
+    public ValidatorUtility validator;
 
     @FXML
     public TableColumn<Country, Integer> countryIdColumn;
@@ -34,6 +37,8 @@ public class CountryController {
 
     @FXML
     private void initialize() {
+        countryDAO = new CountryDAO();
+        validator = new ValidatorUtility();
         countryIdColumn.setCellValueFactory(cellData -> cellData.getValue().getIdProperty().asObject());
         countryNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         countryCapitalColumn.setCellValueFactory(cellData -> cellData.getValue().getCapitalProperty());
@@ -51,15 +56,15 @@ public class CountryController {
     }
 
     public void showAddCountryWindow() {
-        createCustomWindow("/resources/fxml/addCountryLayout.fxml","Add country", 270, 270);
-    }
-
-    public void showRemoveCountryWindow() {
-        createCustomWindow("/resources/fxml/deleteCountryLayout.fxml", "Delete country", 270, 300);
+        createCustomWindow("/resources/fxml/addCountryLayout.fxml","Add country", 400, 370);
     }
 
     public void showEditCountryWindow() {
-        createCustomWindow("/resources/fxml/editCountryLayout.fxml", "Edit country", 270, 330);
+        createCustomWindow("/resources/fxml/editCountryLayout.fxml", "Edit country", 400, 420);
+    }
+
+    public void showRemoveCountryWindow() {
+        createCustomWindow("/resources/fxml/deleteCountryLayout.fxml", "Delete country", 400, 230);
     }
 
     public void showSearchCountryWindow() {

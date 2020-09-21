@@ -1,27 +1,32 @@
 package application.controllers;
 
 import application.model.Country;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 
 public class EditCountryController implements InitializableController {
 
     private CountryController countryController;
 
     @FXML
-    private TextField idTextField;
+    private JFXTextField idTextField;
 
     @FXML
-    private TextField nameTextField;
+    private JFXTextField nameTextField;
 
     @FXML
-    private TextField capitalTextField;
+    private JFXTextField capitalTextField;
 
     @FXML
-    private TextField languageTextField;
+    private JFXTextField languageTextField;
 
     public void init(CountryController countryController) {
         this.countryController = countryController;
+        countryController.validator.setNumberValidator(idTextField);
+        countryController.validator.setRequiredFieldValidator(idTextField);
+        countryController.validator.setRequiredFieldValidator(nameTextField);
+        countryController.validator.setRequiredFieldValidator(capitalTextField);
+        countryController.validator.setRequiredFieldValidator(languageTextField);
     }
 
     public void editCountry() {
