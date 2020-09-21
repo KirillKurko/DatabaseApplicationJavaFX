@@ -39,36 +39,30 @@ public class SearchCountryController implements InitializableController {
     }
 
     public void searchAllCountries() {
-        searchFieldLabel.setVisible(false);
-        searchFieldTextField.setVisible(false);
+        configureSearchComponents("All", false);
     }
 
     public void searchByID() {
-        searchFieldLabel.setText("ID");
-        searchFieldTextField.setText("");
-        searchFieldLabel.setVisible(true);
-        searchFieldTextField.setVisible(true);
+        configureSearchComponents("ID", true);
     }
 
     public void searchByName() {
-        searchFieldLabel.setText("Name");
-        searchFieldTextField.setText("");
-        searchFieldLabel.setVisible(true);
-        searchFieldTextField.setVisible(true);
+        configureSearchComponents("Name", true);
     }
 
     public void searchByCapital() {
-        searchFieldLabel.setText("Capital");
-        searchFieldTextField.setText("");
-        searchFieldLabel.setVisible(true);
-        searchFieldTextField.setVisible(true);
+        configureSearchComponents("Capital", true);
     }
 
     public void searchByLanguage() {
-        searchFieldLabel.setText("Language");
+        configureSearchComponents("Language", true);
+    }
+
+    private void configureSearchComponents(String labelText, boolean visibility) {
+        searchFieldLabel.setVisible(visibility);
+        searchFieldTextField.setVisible(visibility);
+        searchFieldLabel.setText(labelText);
         searchFieldTextField.setText("");
-        searchFieldLabel.setVisible(true);
-        searchFieldTextField.setVisible(true);
     }
 
     public void search() {
